@@ -2,35 +2,30 @@ name = "Arel"
 attendees = ["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"]
 
 def badge_maker(name)
-  return "Hello, my name is #{name}."
+  "Hello, my name is #{name}."
 end
 
-def batch_badge_creator(x)
+def batch_badge_creator(names)
   attendees = []
-    x.each do |name|
-     y = "Hello, my name is #{name}."
-     attendees << y
+    names.each do |name|
+     message = "Hello, my name is #{name}."
+     attendees << message
   end
   return attendees
 end
 
 
-def assign_rooms(x)
-  room_assignments = []
-  num = 1
-    x.each do |name|
-      y = "Hello, #{name}! You'll be assigned to room #{num}!"
-      room_assignments << y
-      num += 1
+def assign_rooms(speakers)
+    speakers.map.with_index do |name, index|
+      message = "Hello, #{name}! You'll be assigned to room #{index + 1}!"
     end
-  return room_assignments
 end
 
-def printer(list)
-  batch_badge_creator(list).each do |print|
-    puts print
+def printer(attendees)
+  batch_badge_creator(attendees).map do |person|
+    puts person
   end
-  assign_rooms(list).each do |print|
-    puts print
+  assign_rooms(attendees).map do |person|
+    puts person
   end
 end
